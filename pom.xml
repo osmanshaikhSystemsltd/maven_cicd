@@ -15,7 +15,7 @@
         <plugin>
             <groupId>com.xebialabs.deployit</groupId>
             <artifactId>maven-deployit-plugin</artifactId>
-            <version>5.1.3</version>
+            <version>4.0.0</version>
 
             <extensions>true</extensions> <!-- tells maven the plugin contains extensions -->
 
