@@ -1,17 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+   <modelVersion>4.0.0</modelVersion>
 
-    <groupId>hello</groupId>
-    <artifactId>HelloWorld</artifactId>
-    <packaging>war</packaging>
-    <version>1.0-SNAPSHOT</version>
+   <groupId>hello</groupId>
+   <artifactId>HelloWorld</artifactId>
+   <packaging>war</packaging>
+   <version>1.0-SNAPSHOT</version>
 
-    <build>
-        <finalName>HelloWorld</finalName>
-    </build>
+   <build>
+       <plugins>
+        <plugin>
+            <groupId>com.xebialabs.deployit</groupId>
+            <artifactId>maven-deployit-plugin</artifactId>
+            <version>4.0.0</version>
 
-    
+            <extensions>true</extensions> <!-- tells maven the plugin contains extensions -->
+
+            <configuration>
+                <deploymentPackageProperties>
+                    <!-- Enter any deployment package level properties as <property>value</property> -->
+                    <orchestrator>default</orchestrator>
+                    <satisfiesReleaseNotes>true</satisfiesReleaseNotes>
+                </deploymentPackageProperties>
+                <deployables>
+
+                    <jee.War name="petclinic" groupId="com.xebialabs.deployit.demo.petclinic-war" artifactId="PetClinic"/>
+
+                    <jee.War name="petclinic-backend" groupId="com.xebialabs.deployit.demo.petclinic-war" artifactId="PetClinic-Backend"/>
+
+                    <file.Archive name="mysql-backend" groupId="mysql" artifactId="mysql-connector-java"/>
+
+                    <file.Folder name="configurationFolder" location="config"/>
+
+                    <file.Archive name="configuration" groupId="org.some.group" artifactId="your-artifact" classifier="txt"/>
+
+                    <wls.DataSourceSpec name="petclinicDS">
+                        <jndiNames>jndi/toto</jndiNames>
+                        <driverName>com.mysql.jdbc.Driver</driverName>
+                        <url>jdbc:mysql://localhost/petclinic</url>
+                        <username>{{DB_USERNAME}}</username>
+                        <password>{{DB_PASSWORD}}</password>
+                    </wls.DataSourceSpec>
+
+                    <sample.AllPossibleKindsSpec name="sampleWithAllPossibleKinds">
+                        <someProp>propValue</someProp>
+                        <someBoolean>true</someBoolean>
+                        <myList>
+                            <value>val1</value>
+                            <value>val2</value>
+                        </myList>
+                        <myMap>
+                            <entry key="key">value</entry>
+                            <entry key="foo">bar</entry>
+                        </myMap>
+                        <myEmbedded>
+                            <sample.EmbeddedCi name="MyEmbeddedCi">
+                                <someProp>propValue</someProp>
+                            </sample.EmbeddedCi>
+                        </myEmbedded>
+                        <myCiRef ref="petClinicDs"/>
+                        <myCiRefs>
+                            <ci ref="petclinic-backend"/>
+                            <ci ref="mysql-backend"/>
+                        </myCiRefs>
+                    </sample.AllPossibleKindsSpec>
+
+                </deployables>
+            </configuration>
+        </plugin>
+    </plugins>
+    <finalName>HelloWorld</finalName>
+</build>
+
+
 </project>
