@@ -4,31 +4,15 @@
    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
    
    <modelVersion>4.0.0</modelVersion>
-   <groupId>com.xebialabs.deployit</groupId>
-   <artifactId>maven-deployit-plugin-dar-format</artifactId>
-
+    
+   <groupId>hello</groupId>
+   <artifactId>HelloWorld</artifactId>
    <packaging>war</packaging>
    <version>1.0-SNAPSHOT</version>
    <url>http://www.xebialabs.com</url>
    
    <build>
-       <plugins>
-        <plugin>
-            <groupId>com.xebialabs.deployit</groupId>
-            <artifactId>maven-deployit-plugin</artifactId>
-            <version>4.0.0</version>
-
-            <extensions>true</extensions> <!-- tells maven the plugin contains extensions -->
-
-            <configuration>
-                <deploymentPackageProperties>
-                    <!-- Enter any deployment package level properties as <property>value</property> -->
-                    <orchestrator>default</orchestrator>
-                    <satisfiesReleaseNotes>true</satisfiesReleaseNotes>
-                </deploymentPackageProperties>
-            </configuration>
-        </plugin>
-    </plugins>
+    <satisfiesReleaseNotes>true</satisfiesReleaseNotes>
     <finalName>HelloWorld</finalName>
 </build>
 
