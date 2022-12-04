@@ -1,0 +1,11 @@
+#Big Files
+jboss-setup/
+terraform/.terraform/
+
+#Private Key
+shaikh-tf-keypair-west.pem
+
+#Terraform Provider
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate.backup

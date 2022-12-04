@@ -1,0 +1,10 @@
+version: 0.0
+os: linux
+files:
+  - source: poc-codebuild.zip
+    destination: /home/ec2-user
+hooks:
+  BeforeInstall:
+   - location: install_dependencies.sh
+     timeout: 300
+     runas: ubuntu
