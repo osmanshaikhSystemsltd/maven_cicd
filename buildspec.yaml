@@ -2,10 +2,10 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      java: corretto8
+      java: corretto11
   build:
     commands:
-      - mvn clean install -P dev
+      - mvn clean install
 artifacts: 
   files:
     - 'target/HelloWorld.war'
