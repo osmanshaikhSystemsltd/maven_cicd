@@ -10,6 +10,7 @@
     
      <build>
          <finalName>HelloWorld</finalName>
+         <defaultGoal>validate</defaultGoal>
          <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
