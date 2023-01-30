@@ -1,10 +1,14 @@
 version: 0.2
+env:
+  variables:
+    SONAR_TOKEN: "8c9234de918067841f3d5f033a4e31252bf656ec"
 phases:
   install:
     runtime-versions:
       java: corretto11
   build:
     commands:
+      - mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=codecommit_sonar
       - mvn clean install
 artifacts: 
   files:
