@@ -8,8 +8,12 @@ phases:
       java: corretto11
   build:
     commands:
-      - mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=codecommit_sonar
-      - mvn clean install
+      - mvn clean verify sonar:sonar \
+        -Dsonar.login=8c9234de918067841f3d5f033a4e31252bf656ec \
+        -Dsonar.host.url=https://sonarcloud.io \
+        -Dsonar.organization=sl-sonar \
+        -Dsonar.projectKey=codecommit_sonar
+      # - mvn clean install
 artifacts: 
   files:
     - 'target/HelloWorld.war'
