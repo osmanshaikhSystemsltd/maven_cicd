@@ -8,7 +8,7 @@ phases:
       java: corretto17
   build:
     commands:
-      - mvn maven-war-plugin:validate
+      - mvn org.apache.maven.plugins:validate
       - mvn clean verify sonar:sonar \
         -Dsonar.login=8c9234de918067841f3d5f033a4e31252bf656ec \
         -Dsonar.projectKey=codecommit_sonar
